@@ -1,0 +1,7 @@
+git clone app
+npm install
+composer update
+cp .env.example .env 
+
+Estar seguro de estar dentro de la carpeta del proyecto
+

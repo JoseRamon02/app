@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\NotasController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('notas', [ NotasController::class, 'notas' ]);
+
+Route::get('notas/{id?}', [ NotasController::class, 'detalle' ]) -> name('notas.detalle');
+
+Route::post('notas', [ NotasController::class, 'crear' ]) -> name('notas.crear');
+
+Route::get('editar/{id}', [ NotasController::class, 'editar' ]) -> name('notas.editar');
+
+Route::put('editar/{id}', [ NotasController::class, 'actualizar' ]) -> name('notas.actualizar');
+
+Route::delete('eliminar/{id}', [ NotasController::class, 'eliminar' ]) -> name('notas.eliminar');
