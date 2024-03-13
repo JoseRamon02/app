@@ -19,8 +19,11 @@ Route::get('notas/{id?}', [ NotasController::class, 'detalle' ]) -> name('notas.
 
 Route::post('notas', [ NotasController::class, 'crear' ]) -> name('notas.crear');
 
-Route::get('editar/{id}', [ NotasController::class, 'editar' ]) -> name('notas.editar');
+Route::get('/notas/editar/{id}', [NotasController::class, 'editar'])->name('notas.editar');
 
-Route::put('editar/{id}', [ NotasController::class, 'actualizar' ]) -> name('notas.actualizar');
+Route::put('/notas/editar/{id}', [ NotasController::class, 'actualizar' ]) -> name('notas.actualizar');
 
 Route::delete('eliminar/{id}', [ NotasController::class, 'eliminar' ]) -> name('notas.eliminar');
+
+Route::get('notas', [ NotasController::class, 'notas'])->name('notas.volver');
+

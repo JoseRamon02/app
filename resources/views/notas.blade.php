@@ -14,23 +14,25 @@
         <table border="1">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Nombre</th>
                     <th>Descripción</th>
                 </tr>
             </thead>
-            @if (isset($notas))
-            @foreach($notas as $nota)
-            <tr>
-                <td>{{ $nota->nombre }}</td>
-                <td>{{ $nota->descripcion }}</td>
-            </tr>   
-            @endforeach
+            @if (isset($nota))
+                @foreach ($nota as $notas)
+                    <tr>
+                        <td>{{ $notas -> id }}</td>
+                        <td>{{ $notas->nombre }}</td>
+                        <td>{{ $notas->descripcion }}</td>
+                    </tr>
+                @endforeach
             @endif
-            
+
         </table>
-        {{$notas->links()}}
+        {{ $nota->links() }}
     </div>
-<br>
+    <br>
     <form action="{{ route('notas.crear') }}" method="POST">
         @csrf @error('nombre')
             <div class="alert alert-danger"> No olvides rellenar el nombre</div>
@@ -49,9 +51,10 @@
             {{ session('mensaje') }}
         </div>
     @endif
-    <br>
-    <a href="{{ route('notas.editar', $nota) }}" class="btn btn-warning btn-sm"> Editar</a>
-    <br>
+    
+    <a href="{{ route('notas.editar', ['id' => $notas->id]) }}" class="btn btn-warning btn-sm">Editar</a>
+  
+     <br><br>
     <form action="{{ route('notas.eliminar', $nota) }}" method="POST" class="d-inline">
         @method('DELETE')
         @csrf
