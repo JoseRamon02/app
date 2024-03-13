@@ -59,6 +59,7 @@ class NotasController extends Controller
             DB::rollBack(); // Rollback transaction in case of error
 
             return redirect()->route('notas.volver')->with('mensaje', 'Error al actualizar la nota');
+
         }
     }
 

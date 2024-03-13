@@ -52,10 +52,10 @@
         </div>
     @endif
     
-    <a href="{{ route('notas.editar', ['id' => $notas->id]) }}" class="btn btn-warning btn-sm">Editar</a>
+    <a href="{{route('notas.editar',['id'=>$notas->id])}}" class="btn btn-warning btn-sm">Editar</a>
   
      <br><br>
-    <form action="{{ route('notas.eliminar', $nota) }}" method="POST" class="d-inline">
+    <form action="{{route('notas.eliminar',['id'=>$notas->id])}}" method="POST" class="d-inline">
         @method('DELETE')
         @csrf
         <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
