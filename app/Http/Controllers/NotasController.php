@@ -67,6 +67,6 @@ class NotasController extends Controller
     {
         $notaEliminar = Nota::findOrFail($id);
         $notaEliminar->delete();
-        return back()->with('mensaje', 'Nota Eliminada');
+        return redirect()->route('notas.volver') ->with('mensaje', 'Nota Eliminada');
     }
 }

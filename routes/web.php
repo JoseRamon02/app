@@ -27,3 +27,4 @@ Route::delete('notas/{id}', [ NotasController::class, 'eliminar'])->name('notas.
 
 Route::get('notas', [ NotasController::class, 'notas'])->name('notas.volver');
 
+Route::get('/home', function () {return view('auth.dashboard');})->middleware('auth','verified');

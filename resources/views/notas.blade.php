@@ -6,17 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notas</title>
     @vite(['resources/css/app.scss', 'resources/js/app.js'])
+    
 </head>
 
 <body>
-    <h1>Notas desde base de datos</h1>
-    <div>
-        <table border="1">
+    <h1>@lang('messages.Notas desde base de datos')</h1>
+    <div class="m-4">
+        <table border="1" >
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Descripción</th>
+                    <th>Opciones</th>
                 </tr>
             </thead>
             @if (isset($nota))
@@ -25,6 +27,14 @@
                         <td>{{ $notas -> id }}</td>
                         <td>{{ $notas->nombre }}</td>
                         <td>{{ $notas->descripcion }}</td>
+                        <td> 
+                            <a href="{{route('notas.editar',['id'=>$notas->id])}}" class="btn btn-warning btn-sm">Editar</a>
+  
+                            <form action="{{route('notas.eliminar',['id'=>$notas->id])}}" method="POST" class="d-inline">
+                                @method('DELETE')
+                                @csrf
+                                <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
+                            </form></td>
                     </tr>
                 @endforeach
             @endif
@@ -51,15 +61,6 @@
             {{ session('mensaje') }}
         </div>
     @endif
-    
-    <a href="{{route('notas.editar',['id'=>$notas->id])}}" class="btn btn-warning btn-sm">Editar</a>
-  
-     <br><br>
-    <form action="{{route('notas.eliminar',['id'=>$notas->id])}}" method="POST" class="d-inline">
-        @method('DELETE')
-        @csrf
-        <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
-    </form>
 </body>
 
 </html>
